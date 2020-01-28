@@ -35,7 +35,7 @@ def job():
     try:    
         content = requests.get(url).json()  
         content1 = json_normalize(content['data']['stations'])             
-        engine = create_engine('postgresql+psycopg2://postgres:ubdctransport@127.0.0.1:5432/postgres') #USERNAME:PASSWORD@ADDRESS:PORT/NAMEDB
+        engine = create_engine('postgresql+psycopg2:/USERNAME:PASSWORD@ADDRESS:PORT/NAMEDB') #USERNAME:PASSWORD@ADDRESS:PORT/NAMEDB
         content1.head(0).to_sql('nextbike', engine,if_exists='append',index=False) 
         conn = engine.raw_connection()
         cur = conn.cursor()
